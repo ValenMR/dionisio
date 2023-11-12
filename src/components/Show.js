@@ -10,6 +10,8 @@ import { db } from '../firabaseConfig/firebase'
 //esto es solo para cuando realicemos la función para eliminar un documento
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+
+import { async } from '@firebase/util'
 const MySwal = withReactContent(Swal)
 
 export const Show = () => {
@@ -27,7 +29,7 @@ export const Show = () => {
     setProducts(
         data.docs.map( (doc) => ( {...doc.data(), id:doc.id}))
     )
-    console.log(products)
+    //console.log(products)
   }
   //4 - Función para eliminar un doc
   const deleteProduct = async (id) => {
@@ -36,6 +38,27 @@ export const Show = () => {
     getProducts()
   }
   //5 - Función de confirmación para sweer alert
+  const confirmDelete = (id) => {
+    MySwal.fire({
+        title: "¿Eliminar el producto?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+            //nuestra función
+            deleteProduct(id)
+            Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+            });
+        }
+      });
+  }
 
   //6 - usamos useEffect
   useEffect( () => {
@@ -70,7 +93,7 @@ export const Show = () => {
                                 <td>{product.stock}</td>
                                 <td>
                                     <Link to={'/edit/${product.id}'} className='btn btn-light'><i className="fa-solid fa-pencil"></i>Editar</Link>
-                                    <button onClick={ () => { deleteProduct(product.id) } } className='btn btn-danger'><i className="fa-solid fa-trash-can"></i>Borrar</button>
+                                    <button onClick={ () => { confirmDelete(product.id) } } className='btn btn-danger'><i className="fa-solid fa-trash-can"></i>Borrar</button>
                                 </td>
                             </tr>
                         )) }
