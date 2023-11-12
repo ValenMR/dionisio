@@ -5,7 +5,7 @@ import React from 'react';
 
 function App() {
   return (
-    <h1>HELLO world</h1>
+    <h1>hello you</h1>
   );
 }
 
