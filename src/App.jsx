@@ -4,7 +4,12 @@ import React from 'react';
 
 function App() {
   return (
-    <h1>hello you</h1>
+    <div className="App">
+
+      <h1>hello you</h1>
+      
+    </div>
+    
   );
 }
 

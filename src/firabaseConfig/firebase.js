@@ -1,6 +1,7 @@
 // Desde acá se realizar la conexión a nuestro proyecto con firebase
 import { initializeApp } from "firebase/app";
-import 'firebase/firestore'
+
+import { getFirestore } from "@firebase/firestore"
 
 
 
@@ -17,4 +18,4 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-export const db = app.firebaseConfig;
+export const db = getFirestore(app)
