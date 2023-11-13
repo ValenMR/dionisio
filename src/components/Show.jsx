@@ -41,19 +41,19 @@ export const Show = () => {
   const confirmDelete = (id) => {
     MySwal.fire({
         title: "¿Eliminar el producto?",
-        text: "You won't be able to revert this!",
+        text: "No podrás volver atrás",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
+        confirmButtonText: "Sí, eliminar!"
       }).then((result) => {
         if (result.isConfirmed) {
             //nuestra función
             deleteProduct(id)
             Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
+                title: "Eliminado!",
+                text: "La fila ha sido eliminada",
                 icon: "success"
             });
         }
@@ -65,8 +65,8 @@ export const Show = () => {
     getProducts()
     //eslint-disable-next-line
   }, [] )
+  
   //7 - devolvemos vista de nuestro componente 
-
   //algo de bootstrap
   return (
     <>
