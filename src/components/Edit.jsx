@@ -22,13 +22,17 @@ const Edit = () => {
 
     //en este caso necesitamos traer los datos de la tabla de la fila seleccionada
     const getProductById = async (id) => {
-        const product = await getDoc( doc(db, "products", id) )
-        if(product.exists()) {
-            //console.log(product.data())
-            setDescription(product.data().description)
-            setStock(product.data().stock)
-        }else{
-            console.log('El producto no existe')
+        try {
+            const product = await getDoc( doc(db, "products", id) )
+            if(product.exists()) {
+                //console.log(product.data())
+                setDescription(product.data().description)
+                setStock(product.data().stock)
+            }else{
+                console.log('El producto no existe')
+            }
+        }catch (error) {
+            console.error('Error al obtener el producto:', error);
         }
     }
 
