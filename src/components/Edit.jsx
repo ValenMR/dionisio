@@ -6,7 +6,7 @@ import { db } from "../firabaseConfig/firebase"
 const Edit = () => {
 
     const [ description, setDescription ] = useState('')
-    const [ stock, setStock ] = useState(0)
+    const [ stock, setStock ] = useState('')
 
     const navigate = useNavigate()
     const {id} = useParams()
@@ -25,7 +25,7 @@ const Edit = () => {
         try {
             const product = await getDoc( doc(db, "products", id) )
             if(product.exists()) {
-                //console.log(product.data())
+                console.log(product.data())
                 setDescription(product.data().description)
                 setStock(product.data().stock)
             }else{
