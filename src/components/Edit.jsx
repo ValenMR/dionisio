@@ -6,7 +6,7 @@ import { db } from "../firabaseConfig/firebase"
 const Edit = () => {
 
     const [ description, setDescription ] = useState('')
-    const [ stock, setStock ] = useState(0)
+    const [ stock, setStock ] = useState("")
 
     const navigate = useNavigate()
     const {id} = useParams()

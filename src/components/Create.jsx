@@ -9,7 +9,7 @@ const Create = () => {
   //form donde vamos a hacer el alta de productos.   
 
   const [ description, setDescription ] = useState('')
-  const [ stock, setStock ] = useState(0)
+  const [ stock, setStock ] = useState("")
   const navigate = useNavigate()
 
   const productsCollection = collection(db, "products")
